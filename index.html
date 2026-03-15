@@ -41,7 +41,7 @@
             background-color: var(--bg-color);
             color: var(--text-primary);
             line-height: 1.7;
-            overflow-x: hidden;
+            overflow-x: hidden; /* Prevents horizontal scroll */
             background-image: 
                 radial-gradient(circle at 15% 50%, rgba(16, 185, 129, 0.05), transparent 25%),
                 radial-gradient(circle at 85% 30%, rgba(6, 182, 212, 0.05), transparent 25%);
@@ -87,7 +87,7 @@
             display: inline-block; padding: 14px 32px;
             background: var(--gradient-text); color: #000; font-weight: 700;
             border-radius: 8px; text-decoration: none; transition: all 0.3s ease;
-            border: none; cursor: pointer;
+            border: none; cursor: pointer; text-align: center;
         }
         .btn:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(16, 185, 129, 0.2); }
         
@@ -104,7 +104,7 @@
             height: 100vh; display: flex; align-items: center; justify-content: center;
             text-align: center; position: relative;
         }
-        .hero-content { animation: float 6s ease-in-out infinite; }
+        .hero-content { animation: float 6s ease-in-out infinite; width: 100%; }
         .hero-content p:first-child { color: var(--accent-primary); font-weight: 600; letter-spacing: 2px; text-transform: uppercase; }
         .hero-content h1 { font-size: 5rem; font-weight: 800; letter-spacing: -2px; margin: 10px 0; line-height: 1.1; }
         
@@ -112,7 +112,7 @@
         .typing-text { border-right: 2px solid var(--accent-primary); white-space: nowrap; overflow: hidden; animation: typing 3.5s steps(40, end), blink-caret .75s step-end infinite; display: inline-block; max-width: fit-content; margin: 0 auto; }
 
         /* Cards & Grids */
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
         
         .card {
             background: var(--bg-secondary);
@@ -154,6 +154,10 @@
         .form-control:focus { outline: none; border-color: var(--accent-primary); box-shadow: 0 0 10px rgba(16, 185, 129, 0.2); }
         textarea.form-control { resize: vertical; min-height: 150px; }
 
+        /* Contact Links */
+        #contact a { color: var(--text-secondary); text-decoration: none; transition: color 0.3s; }
+        #contact a:hover { color: var(--accent-primary); }
+
         /* Keyframe Animations */
         @keyframes float { 0% { transform: translateY(0px); } 50% { transform: translateY(-15px); } 100% { transform: translateY(0px); } }
         @keyframes typing { from { width: 0 } to { width: 100% } }
@@ -169,13 +173,43 @@
         footer { text-align: center; padding: 40px 0; border-top: 1px solid rgba(255,255,255,0.05); margin-top: 50px; background: #000; }
         footer a { color: var(--text-secondary); text-decoration: none; margin: 0 15px; font-weight: 600; transition: color 0.3s; }
         footer a:hover { color: var(--accent-primary); }
+        footer .social-icons { margin-top: 15px; }
+        footer .social-icons a { margin: 0 15px; font-size: 24px; }
 
-        footer .social-icons {
-            margin-top: 15px;
+        /* --- HEAVILY REVISED MOBILE QUERIES --- */
+        @media (max-width: 768px) {
+            /* Adjust section spacing */
+            section { padding: 80px 0; }
+            h2 { font-size: 2rem; margin-bottom: 1.5rem; }
+            
+            /* Navbar adjustments - forces links to wrap neatly */
+            nav { padding: 15px 0; }
+            nav .nav-content { flex-direction: column; gap: 10px; }
+            nav .nav-content div:last-child { display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; }
+            nav a { margin: 0; font-size: 0.95rem; }
+            
+            /* Hero text scaling */
+            .hero-content h1 { font-size: 3rem; line-height: 1.2; margin: 15px 0; }
+            .typing-text p { font-size: 1rem !important; } /* Scales down to prevent overflow */
+            
+            /* Buttons - stack neatly with a max width so they don't look massive */
+            .btn-group { flex-direction: column; align-items: center; width: 100%; gap: 15px; }
+            .btn { width: 100%; max-width: 280px; padding: 12px 20px; }
+            
+            /* Grid and cards */
+            .grid { grid-template-columns: 1fr; }
+            .card { padding: 30px 20px; }
         }
-        footer .social-icons a {
-            margin: 0 15px;
-            font-size: 24px;
+
+        @media (max-width: 480px) {
+            /* Ultra-small screen adjustments (older iPhones/Androids) */
+            .hero-content h1 { font-size: 2.3rem; }
+            .hero-content p:first-child { font-size: 0.85rem; }
+            .typing-text p { font-size: 0.85rem !important; } /* Ensures longest string fits */
+            nav a { font-size: 0.85rem; }
+            nav .nav-content div:last-child { gap: 10px; }
+            .btn { max-width: 250px; font-size: 0.9rem; }
+            .tags { justify-content: center; }
         }
     </style>
 </head>
@@ -218,6 +252,7 @@
             <div class="tag">React</div>
             <div class="tag">Angular</div>
             <div class="tag">Node.js & Express</div>
+            <div class="tag">HTML & CSS</div>
             <div class="tag">MySQL & MongoDB</div>
             <div class="tag">N8N</div>
         </div>
@@ -256,6 +291,7 @@
                 <span class="date">Node.js, Express, TanStack Query, WebRTC</span>
                 <p>A collaborative platform with a VSCode-powered editor, real-time video rooms, and auto-feedback.</p>
                 <p>Features include live dashboard stats, secure isolated code execution, screen sharing, and automated CodeRabbit reviews via GitHub workflows.</p>
+                <a href="https://github.com/anish840/Talent-IQ" class="btn btn-outline" style="margin-top: 15px;">View on GitHub</a>
             </div>
 
             <div class="card hidden-up" style="transition-delay: 300ms;">
@@ -263,13 +299,14 @@
                 <span class="date">Python, Flask, RoBERTa</span>
                 <p>A Web-based Flask application providing an intuitive interface to analyze text sentiment.</p>
                 <p>Leverages the pre-trained cardiffnlp/twitter-roberta-base-sentiment model to classify text as positive, neutral, or negative, displaying sentiment alongside probability scores.</p>
+                <a href="https://github.com/anish840/Sentimental-Analysis" class="btn btn-outline" style="margin-top: 15px;">View on GitHub</a>
             </div>
         </div>
     </section>
 
     <section id="contact" class="container hidden-up" style="text-align: center;">
         <h2>Let's <span>Connect</span></h2>
-        <p>I am always open to discussing new projects, creative ideas, or opportunities. Drop me a message below!</p>
+        <p>I am always open to discussing new projects, creative ideas, or opportunities. Drop me a message below or email me directly at <i class="fas fa-envelope" style="margin-right: 5px;"></i><a href="mailto:myselfanish840@gmail.com">myselfanish840@gmail.com</a>.</p>
         
         <form class="contact-form" action="https://formspree.io/f/xdawlyeb" method="POST">
             <div class="form-group">
