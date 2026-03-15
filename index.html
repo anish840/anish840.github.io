@@ -4,115 +4,186 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Anish Kumar | Portfolio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XGN9024N81"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-XGN9024N81');
+    </script>
+
     <style>
-        /* --- CSS STYLING --- */
+        /* --- PREMIUM CSS STYLING --- */
         :root {
-            --bg-color: #0b1120;
-            --surface-color: rgba(255, 255, 255, 0.05);
-            --text-primary: #f8fafc;
-            --text-secondary: #94a3b8;
-            --accent-color: #38bdf8;
-            --accent-glow: rgba(56, 189, 248, 0.4);
+            --bg-color: #050505;
+            --bg-secondary: #111;
+            --surface-color: rgba(255, 255, 255, 0.03);
+            --text-primary: #ffffff;
+            --text-secondary: #a1a1aa;
+            --accent-primary: #10b981; /* Emerald */
+            --accent-secondary: #06b6d4; /* Cyan */
+            --gradient-text: linear-gradient(to right, var(--accent-primary), var(--accent-secondary));
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Inter', sans-serif;
             scroll-behavior: smooth;
         }
 
         body {
             background-color: var(--bg-color);
             color: var(--text-primary);
-            line-height: 1.6;
+            line-height: 1.7;
             overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(16, 185, 129, 0.05), transparent 25%),
+                radial-gradient(circle at 85% 30%, rgba(6, 182, 212, 0.05), transparent 25%);
         }
 
-        /* Typography & Layout */
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
         
         h1, h2, h3 { color: var(--text-primary); }
-        h2 { font-size: 2.5rem; margin-bottom: 2rem; border-bottom: 2px solid var(--accent-color); display: inline-block; padding-bottom: 10px; }
-        p { color: var(--text-secondary); margin-bottom: 1rem; }
         
-        section { padding: 100px 0; }
+        h2 { 
+            font-size: 2.5rem; 
+            margin-bottom: 2.5rem; 
+            font-weight: 800;
+        }
+        
+        h2 span {
+            background: var(--gradient-text);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        p { color: var(--text-secondary); margin-bottom: 1.2rem; font-size: 1.05rem; }
+        
+        section { padding: 120px 0; }
 
         /* Navbar */
         nav {
-            position: fixed;
-            top: 0; width: 100%;
-            background: rgba(11, 17, 32, 0.8);
-            backdrop-filter: blur(10px);
-            padding: 20px 0;
-            z-index: 1000;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
+            position: fixed; top: 0; width: 100%;
+            background: rgba(5, 5, 5, 0.8);
+            backdrop-filter: blur(12px);
+            padding: 20px 0; z-index: 1000;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
         }
-        nav .nav-content {
-            display: flex; justify-content: space-between; align-items: center;
+        nav .nav-content { display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-weight: 800; font-size: 1.5rem; letter-spacing: -1px; background: var(--gradient-text); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        nav a { color: var(--text-secondary); text-decoration: none; font-weight: 600; margin-left: 25px; transition: color 0.3s; }
+        nav a:hover { color: var(--text-primary); }
+
+        /* Buttons */
+        .btn-group { display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; margin-top: 30px; }
+        
+        .btn {
+            display: inline-block; padding: 14px 32px;
+            background: var(--gradient-text); color: #000; font-weight: 700;
+            border-radius: 8px; text-decoration: none; transition: all 0.3s ease;
+            border: none; cursor: pointer;
         }
-        nav a { color: var(--text-primary); text-decoration: none; font-weight: 600; margin-left: 20px; transition: color 0.3s; }
-        nav a:hover { color: var(--accent-color); }
+        .btn:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(16, 185, 129, 0.2); }
+        
+        .btn-outline {
+            background: transparent; color: var(--text-primary);
+            border: 2px solid var(--accent-primary);
+        }
+        .btn-outline:hover {
+            background: rgba(16, 185, 129, 0.1); box-shadow: 0 10px 20px rgba(16, 185, 129, 0.1);
+        }
 
         /* Hero Section */
         #hero {
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            background: radial-gradient(circle at center, #1e293b 0%, var(--bg-color) 70%);
+            height: 100vh; display: flex; align-items: center; justify-content: center;
+            text-align: center; position: relative;
         }
-        .hero-content h1 { font-size: 4rem; margin-bottom: 10px; }
-        .hero-content span { color: var(--accent-color); }
-        .btn {
-            display: inline-block; padding: 12px 30px; margin-top: 20px;
-            background: var(--accent-color); color: #000; font-weight: 700;
-            border-radius: 30px; text-decoration: none; transition: all 0.3s;
-            box-shadow: 0 0 15px var(--accent-glow);
-        }
-        .btn:hover { transform: translateY(-3px); box-shadow: 0 0 25px var(--accent-glow); }
+        .hero-content { animation: float 6s ease-in-out infinite; }
+        .hero-content p:first-child { color: var(--accent-primary); font-weight: 600; letter-spacing: 2px; text-transform: uppercase; }
+        .hero-content h1 { font-size: 5rem; font-weight: 800; letter-spacing: -2px; margin: 10px 0; line-height: 1.1; }
+        
+        /* Typing Effect */
+        .typing-text { border-right: 2px solid var(--accent-primary); white-space: nowrap; overflow: hidden; animation: typing 3.5s steps(40, end), blink-caret .75s step-end infinite; display: inline-block; max-width: fit-content; margin: 0 auto; }
 
         /* Cards & Grids */
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
         
         .card {
-            background: var(--surface-color);
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 16px;
-            padding: 30px;
-            transition: transform 0.3s, border-color 0.3s;
+            background: var(--bg-secondary);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 12px; padding: 40px 30px;
+            transition: all 0.4s ease;
+            position: relative; overflow: hidden;
         }
-        .card:hover {
-            transform: translateY(-10px);
-            border-color: var(--accent-color);
+        .card::before {
+            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 3px;
+            background: var(--gradient-text); transform: scaleX(0); transform-origin: left; transition: transform 0.4s ease;
         }
-        .card h3 { color: var(--accent-color); margin-bottom: 10px; }
+        .card:hover { transform: translateY(-10px); background: #151515; border-color: rgba(255,255,255,0.1); box-shadow: 0 20px 40px rgba(0,0,0,0.4); }
+        .card:hover::before { transform: scaleX(1); }
+        .card h3 { font-size: 1.4rem; margin-bottom: 5px; }
+        .card .date { color: var(--accent-primary); font-size: 0.9rem; font-weight: 600; margin-bottom: 20px; display: block; }
+        .card ul { margin-left: 20px; color: var(--text-secondary); }
+        .card ul li { margin-bottom: 10px; }
 
-        /* Tags for skills */
-        .tags { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 15px; }
-        .tag { background: rgba(56, 189, 248, 0.1); color: var(--accent-color); padding: 5px 15px; border-radius: 20px; font-size: 0.85rem; border: 1px solid var(--accent-color); }
+        /* Tags */
+        .tags { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 25px; }
+        .tag { 
+            background: rgba(255,255,255,0.03); color: var(--text-primary); 
+            padding: 8px 18px; border-radius: 6px; font-size: 0.9rem; font-weight: 600;
+            border: 1px solid rgba(255,255,255,0.1); transition: all 0.3s ease;
+        }
+        .tag:hover { border-color: var(--accent-primary); color: var(--accent-primary); transform: translateY(-2px); }
 
-        /* Animations */
-        .fade-in { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
-        .fade-in.appear { opacity: 1; transform: translateY(0); }
+        /* Form Styling */
+        .contact-form { max-width: 600px; margin: 40px auto 0; text-align: left; }
+        .form-group { margin-bottom: 20px; }
+        .form-control { 
+            width: 100%; padding: 15px; 
+            background: var(--bg-secondary); 
+            border: 1px solid rgba(255,255,255,0.1); 
+            border-radius: 8px; color: var(--text-primary); 
+            font-size: 1rem; transition: all 0.3s ease;
+        }
+        .form-control:focus { outline: none; border-color: var(--accent-primary); box-shadow: 0 0 10px rgba(16, 185, 129, 0.2); }
+        textarea.form-control { resize: vertical; min-height: 150px; }
+
+        /* Keyframe Animations */
+        @keyframes float { 0% { transform: translateY(0px); } 50% { transform: translateY(-15px); } 100% { transform: translateY(0px); } }
+        @keyframes typing { from { width: 0 } to { width: 100% } }
+        @keyframes blink-caret { from, to { border-color: transparent } 50% { border-color: var(--accent-primary); } }
+
+        /* Scroll Animations */
+        .hidden-left { opacity: 0; transform: translateX(-50px); transition: all 1s ease-out; }
+        .hidden-right { opacity: 0; transform: translateX(50px); transition: all 1s ease-out; }
+        .hidden-up { opacity: 0; transform: translateY(50px); transition: all 1s ease-out; }
+        .show { opacity: 1; transform: translate(0); }
 
         /* Footer */
-        footer { text-align: center; padding: 40px 0; border-top: 1px solid rgba(255,255,255,0.1); margin-top: 50px; }
-        footer a { color: var(--accent-color); text-decoration: none; margin: 0 10px; }
+        footer { text-align: center; padding: 40px 0; border-top: 1px solid rgba(255,255,255,0.05); margin-top: 50px; background: #000; }
+        footer a { color: var(--text-secondary); text-decoration: none; margin: 0 15px; font-weight: 600; transition: color 0.3s; }
+        footer a:hover { color: var(--accent-primary); }
+
+        footer .social-icons {
+            margin-top: 15px;
+        }
+        footer .social-icons a {
+            margin: 0 15px;
+            font-size: 24px;
+        }
     </style>
 </head>
 <body>
 
     <nav>
         <div class="container nav-content">
-            <div style="font-weight: 700; font-size: 1.2rem;">AK.</div>
+            <div class="logo">AK</div>
             <div>
                 <a href="#about">About</a>
                 <a href="#experience">Experience</a>
@@ -123,109 +194,126 @@
     </nav>
 
     <section id="hero">
-        <div class="container hero-content fade-in">
+        <div class="container hero-content">
             <p>Hello, World! I am</p>
-            <h1>Anish <span>Kumar</span> [cite: 1]</h1>
-            <p>Software Developer Engineer [cite: 18] | Information Science Engineer [cite: 5]</p>
-            <a href="#projects" class="btn">View My Work</a>
+            <h1>Anish Kumar</h1>
+            <div class="typing-text">
+                <p style="font-size: 1.5rem; color: var(--text-secondary); margin: 0;">Software Developer Engineer</p>
+            </div>
+            <div class="btn-group">
+                <a href="#projects" class="btn">View My Work</a>
+                <a href="resume_anish.pdf" download="Anish_Kumar_Resume.pdf" class="btn btn-outline">Download Resume</a>
+            </div>
         </div>
     </section>
 
-    <section id="about" class="container fade-in">
-        <h2>About Me & Skills</h2>
-        <p>I am a Software Developer Engineer based in Bangalore, Karnataka[cite: 8, 18]. I hold a Bachelor of Engineering in Information Science from Cambridge Institute of Technology (2025) with a CGPA of 8.94[cite: 4, 5, 9]. I specialize in full-stack development and AI integrations.</p>
+    <section id="about" class="container hidden-up">
+        <h2>About <span>Me</span></h2>
+        <p>I am a Software Developer Engineer based in Bangalore, Karnataka. I hold a Bachelor of Engineering in Information Science from Cambridge Institute of Technology (2025) with a CGPA of 8.94. I specialize in building full-stack applications and integrating AI to solve complex problems.</p>
         
         <div class="tags">
-            <div class="tag">Python [cite: 31]</div>
-            <div class="tag">JavaScript [cite: 31]</div>
-            <div class="tag">C/C++ [cite: 31]</div>
-            <div class="tag">React [cite: 32]</div>
-            <div class="tag">Angular [cite: 32]</div>
-            <div class="tag">Node.js & Express [cite: 32]</div>
-            <div class="tag">MySQL & MongoDB [cite: 32]</div>
-            <div class="tag">N8N [cite: 32]</div>
+            <div class="tag">Python</div>
+            <div class="tag">JavaScript</div>
+            <div class="tag">C/C++</div>
+            <div class="tag">React</div>
+            <div class="tag">Angular</div>
+            <div class="tag">Node.js & Express</div>
+            <div class="tag">MySQL & MongoDB</div>
+            <div class="tag">N8N</div>
         </div>
     </section>
 
-    <section id="experience" class="container fade-in">
-        <h2>Experience</h2>
+    <section id="experience" class="container">
+        <h2>My <span>Experience</span></h2>
         <div class="grid">
-            <div class="card">
-                <h3>91social Software Pvt. Ltd. [cite: 17]</h3>
-                <p><strong>Software Developer Engineer</strong> | 2025 - Present [cite: 18, 19]</p>
+            <div class="card hidden-left">
+                <h3>91social Software Pvt. Ltd.</h3>
+                <span class="date">Software Developer Engineer | 2025 - Present</span>
                 <ul>
-                    <li>Developed a custom Shopify application utilizing AI to automate content generation and optimize SEO[cite: 20].</li>
-                    <li>Architected backend workflow automations using n8n to simplify data processes[cite: 21].</li>
-                    <li>Managed end-to-end integration within the Shopify ecosystem[cite: 22].</li>
+                    <li>Developed a custom Shopify application utilizing AI to automate content generation and optimize SEO.</li>
+                    <li>Architected backend workflow automations using n8n to simplify data processes.</li>
+                    <li>Managed end-to-end integration within the Shopify ecosystem.</li>
                 </ul>
             </div>
             
-            <div class="card">
-                <h3>Samsung Innovation Campus [cite: 23]</h3>
-                <p><strong>Coding & Programming</strong> | Feb 2023 - Mar 2023 [cite: 24, 26]</p>
+            <div class="card hidden-right">
+                <h3>Samsung Innovation Campus</h3>
+                <span class="date">Coding & Programming | Feb 2023 - Mar 2023</span>
                 <ul>
-                    <li>Utilized ML algorithms for predictive models, resulting in a 20% accuracy increase[cite: 27].</li>
-                    <li>Researched advancements in AI to implement cutting-edge technologies[cite: 28].</li>
-                    <li>Analyzed large datasets to identify key trends influencing strategic decisions[cite: 29].</li>
+                    <li>Utilized ML algorithms for predictive models, resulting in a 20% accuracy increase.</li>
+                    <li>Researched advancements in AI to implement cutting-edge technologies.</li>
+                    <li>Analyzed large datasets to identify key trends influencing strategic decisions.</li>
                 </ul>
             </div>
         </div>
     </section>
 
-    <section id="projects" class="container fade-in">
-        <h2>Featured Projects</h2>
+    <section id="projects" class="container">
+        <h2>Featured <span>Projects</span></h2>
         <div class="grid">
-            <div class="card">
-                <h3>Full-Stack Collab Coding Platform [cite: 13]</h3>
-                <p>A collaborative platform with a VSCode-powered editor, real-time video rooms, and auto-feedback[cite: 14].</p>
-                <p>Built with Node.js, Express, TanStack Query, Clerk, Inngest, and GitHub workflows[cite: 14, 15]. Features include live dashboard stats, screen sharing, and automated CodeRabbit reviews[cite: 15, 16].</p>
+            <div class="card hidden-up" style="transition-delay: 100ms;">
+                <h3>Full-Stack Collab Coding Platform</h3>
+                <span class="date">Node.js, Express, TanStack Query, WebRTC</span>
+                <p>A collaborative platform with a VSCode-powered editor, real-time video rooms, and auto-feedback.</p>
+                <p>Features include live dashboard stats, secure isolated code execution, screen sharing, and automated CodeRabbit reviews via GitHub workflows.</p>
             </div>
 
-            <div class="card">
-                <h3>Sentimental Analysis App [cite: 7]</h3>
-                <p>A Web-based Flask application providing an interface to analyze text sentiment[cite: 10].</p>
-                <p>Leverages the pre-trained cardiffnlp/twitter-roberta-base-sentiment model to classify text as positive, neutral, or negative[cite: 11]. It displays sentiment alongside probability scores for prediction confidence[cite: 12].</p>
+            <div class="card hidden-up" style="transition-delay: 300ms;">
+                <h3>Sentimental Analysis App</h3>
+                <span class="date">Python, Flask, RoBERTa</span>
+                <p>A Web-based Flask application providing an intuitive interface to analyze text sentiment.</p>
+                <p>Leverages the pre-trained cardiffnlp/twitter-roberta-base-sentiment model to classify text as positive, neutral, or negative, displaying sentiment alongside probability scores.</p>
             </div>
         </div>
     </section>
 
-    <section id="contact" class="container fade-in" style="text-align: center;">
-        <h2>Let's Connect</h2>
-        <p>I am always open to discussing new projects, creative ideas, or opportunities to be part of your visions.</p>
-        <div style="margin-top: 20px;">
-            <a href="mailto:myselfanish840@gmail.com" class="btn">myselfanish840@gmail.com [cite: 2]</a>
-        </div>
+    <section id="contact" class="container hidden-up" style="text-align: center;">
+        <h2>Let's <span>Connect</span></h2>
+        <p>I am always open to discussing new projects, creative ideas, or opportunities. Drop me a message below!</p>
+        
+        <form class="contact-form" action="https://formspree.io/f/xdawlyeb" method="POST">
+            <div class="form-group">
+                <input type="text" name="name" class="form-control" placeholder="Your Name" required>
+            </div>
+            <div class="form-group">
+                <input type="email" name="email" class="form-control" placeholder="Your Email" required>
+            </div>
+            <div class="form-group">
+                <textarea name="message" class="form-control" placeholder="Your Message" required></textarea>
+            </div>
+            <button type="submit" class="btn" style="width: 100%;">Send Message</button>
+        </form>
     </section>
 
     <footer>
-        <p>&copy; 2026 Anish Kumar[cite: 1]. All Rights Reserved.</p>
-        <p>
-            <a href="#">LinkedIn [cite: 2]</a> | 
-            <a href="#">GitHub [cite: 2]</a> | 
-            +918789133235 [cite: 2]
-        </p>
+        <p>&copy; 2026 Anish Kumar. All Rights Reserved.</p>
+        <div class="social-icons">
+            <a href="https://linkedin.com/in/anishkumar840" target="_blank"><i class="fab fa-linkedin"></i></a>
+            <a href="https://github.com/anish840" target="_blank"><i class="fab fa-github"></i></a>
+            <a href="https://x.com/_im_anish" target="_blank"><i class="fab fa-x-twitter"></i></a>
+            <a href="tel:+918789133235"><i class="fas fa-phone"></i></a>
+        </div>
     </footer>
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            const faders = document.querySelectorAll('.fade-in');
-            
-            const appearOptions = {
-                threshold: 0.15,
+            const observerOptions = {
+                threshold: 0.1,
                 rootMargin: "0px 0px -50px 0px"
             };
 
-            const appearOnScroll = new IntersectionObserver(function(entries, observer) {
+            const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
-                    if (!entry.isIntersecting) return;
-                    entry.target.classList.add('appear');
-                    observer.unobserve(entry.target);
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('show');
+                        // Optional: Stop observing once animated
+                        // observer.unobserve(entry.target); 
+                    }
                 });
-            }, appearOptions);
+            }, observerOptions);
 
-            faders.forEach(fader => {
-                appearOnScroll.observe(fader);
-            });
+            const hiddenElements = document.querySelectorAll('.hidden-left, .hidden-right, .hidden-up');
+            hiddenElements.forEach((el) => observer.observe(el));
         });
     </script>
 </body>
